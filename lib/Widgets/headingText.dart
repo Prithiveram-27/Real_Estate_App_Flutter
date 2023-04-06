@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class HeadingText extends StatelessWidget {
   String headingText;
   HeadingText(this.headingText, {super.key});
@@ -15,7 +17,7 @@ class HeadingText extends StatelessWidget {
           Text(
             headingText,
             style: const TextStyle(
-              color: Colors.black,
+              color: Constants.primaryColor,
               fontWeight: FontWeight.bold,
               fontSize: 22,
             ),

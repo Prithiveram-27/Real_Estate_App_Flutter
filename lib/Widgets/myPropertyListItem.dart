@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class MyPropertyListItem extends StatelessWidget {
   final String imgUrl;
   final String propType;
@@ -42,7 +44,7 @@ class MyPropertyListItem extends StatelessWidget {
                     children: [
                       Text(
                         propType,
-                        style: const TextStyle(color: Colors.pink),
+                        style: const TextStyle(color: Constants.iconPrimaryColor),
                       ),
                       const SizedBox(
                         height: 5,

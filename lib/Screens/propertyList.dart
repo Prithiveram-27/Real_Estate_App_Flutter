@@ -5,6 +5,7 @@ import 'package:home_services_app/Providers/Property_api.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
 import 'package:provider/provider.dart';
 import '../Widgets/myPropertyListItem.dart';
+import '../constants.dart';
 
 class PropertiesList extends StatefulWidget {
   const PropertiesList({super.key});
@@ -53,14 +54,14 @@ class _PropertiesListState extends State<PropertiesList> {
                 child: OutlineSearchBar(
                   autoCorrect: true,
                   ignoreSpecialChar: true,
-                  borderColor: Colors.black,
+                  borderColor: Constants.primaryColor,
                   borderWidth: 3.0,
                   borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                   searchButtonIconColor: Colors.grey[800],
                   hintText: "Search",
                   enableSuggestions: true,
-                  cursorColor: Colors.black,
-                  clearButtonColor: Colors.black38,
+                  cursorColor: Constants.primaryColor,
+                  clearButtonColor: Constants.primaryColor,
                   textEditingController: searchBarController,
                   onSearchButtonPressed: (value) {
                     setState(() {
@@ -83,7 +84,7 @@ class _PropertiesListState extends State<PropertiesList> {
                           ConnectionState.waiting
                       ? const Center(
                           child: CircularProgressIndicator(
-                          color: Colors.black,
+                          color: Constants.primaryColor,
                         ))
                       : Center(
                           child: RefreshIndicator(

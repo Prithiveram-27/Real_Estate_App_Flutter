@@ -5,6 +5,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../constants.dart';
+
 class ImageInput extends StatefulWidget {
   const ImageInput({Key? key}) : super(key: key);
 
@@ -67,7 +69,7 @@ class _ImageInputState extends State<ImageInput> {
                     },
                     child: const Text(
                       "Camera",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Constants.primaryColor),
                     ),
                   ),
                   TextButton(
@@ -76,7 +78,7 @@ class _ImageInputState extends State<ImageInput> {
                       Navigator.pop(context);
                     },
                     child: const Text("Gallery",
-                        style: TextStyle(color: Colors.black)),
+                        style: TextStyle(color: Constants.primaryColor)),
                   ),
                 ],
               )
@@ -111,10 +113,10 @@ class _ImageInputState extends State<ImageInput> {
             _buildPopupDialog(context);
           },
           style: const ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(Colors.black54)),
+              backgroundColor: MaterialStatePropertyAll(Constants.primaryColor)),
           child: const Text(
             "Add Image",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Constants.secondaryColor),
           ),
         ),
       ],

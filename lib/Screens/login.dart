@@ -7,6 +7,8 @@ import 'package:home_services_app/Screens/home.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../constants.dart';
+
 enum MobileVerificationState { Mobile_SHOW_state, Otp_SHOW_state }
 
 class Login extends StatefulWidget {
@@ -143,11 +145,11 @@ class _LoginState extends State<Login> {
                 borderRadius: BorderRadius.circular(5),
                 fieldHeight: 50,
                 fieldWidth: 40,
-                activeFillColor: Colors.white,
-                activeColor: Colors.black,
-                inactiveColor: Colors.black),
+                activeFillColor: Constants.secondaryColor,
+                activeColor: Constants.primaryColor,
+                inactiveColor: Constants.primaryColor),
             animationDuration: const Duration(milliseconds: 300),
-            //backgroundColor: Colors.white,
+            //backgroundColor: Constants.secondaryColor,
             enableActiveFill: false,
             controller: otpController,
             onCompleted: (v) {
@@ -176,7 +178,7 @@ class _LoginState extends State<Login> {
 
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Colors.white,
+      backgroundColor: Constants.secondaryColor,
       body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
         SizedBox(
           height: _headerHeight,
@@ -226,7 +228,7 @@ class _LoginState extends State<Login> {
                 ? "Get OTP"
                 : "Verify",
             style: TextStyle(
-              color: Colors.white,
+              color: Constants.secondaryColor,
               fontSize: 20,
             ),
           ),

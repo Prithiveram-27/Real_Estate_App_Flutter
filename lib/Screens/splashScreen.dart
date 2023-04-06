@@ -5,6 +5,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:home_services_app/Screens/login.dart';
 
+import '../constants.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key, required this.title}) : super(key: key);
 
@@ -66,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: Colors.white,
+                color: Constants.secondaryColor,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.3),

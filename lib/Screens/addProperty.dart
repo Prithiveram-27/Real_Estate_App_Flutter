@@ -6,6 +6,7 @@ import 'package:home_services_app/Providers/Property_api.dart';
 import 'package:home_services_app/Providers/property.dart';
 import 'package:provider/provider.dart';
 import '../Widgets/imageInput.dart';
+import '../constants.dart';
 
 class AddPropertyScreen extends StatefulWidget {
   const AddPropertyScreen({super.key});
@@ -148,16 +149,16 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           autofocus: true,
                           controller: _nameController,
                           focusNode: _nameFocusNode,
-                          cursorColor: Colors.black,
+                          cursorColor: Constants.primaryColor,
                           decoration: const InputDecoration(
                             labelText: "Name of the Property",
-                            labelStyle: TextStyle(color: Colors.black),
-                            focusColor: Colors.black54,
+                            labelStyle: TextStyle(color: Constants.primaryColor),
+                            focusColor: Constants.primaryColor,
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
+                              borderSide: BorderSide(color: Constants.primaryColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
+                              borderSide: BorderSide(color: Constants.primaryColor),
                             ),
                           ),
                           textInputAction: TextInputAction.next,
@@ -189,17 +190,17 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                         TextFormField(
                           controller: _priceController,
                           focusNode: _priceFocusNode,
-                          cursorColor: Colors.black,
+                          cursorColor: Constants.primaryColor,
                           keyboardType: TextInputType.number,
                           decoration: const InputDecoration(
                             labelText: "Price",
-                            labelStyle: TextStyle(color: Colors.black),
-                            focusColor: Colors.black54,
+                            labelStyle: TextStyle(color: Constants.primaryColor),
+                            focusColor: Constants.primaryColor,
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
+                              borderSide: BorderSide(color: Constants.primaryColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
+                              borderSide: BorderSide(color: Constants.primaryColor),
                             ),
                           ),
                           textInputAction: TextInputAction.next,
@@ -231,17 +232,17 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                         TextFormField(
                           controller: _addressController,
                           focusNode: _addressFocusNode,
-                          cursorColor: Colors.black,
+                          cursorColor: Constants.primaryColor,
                           keyboardType: TextInputType.streetAddress,
                           decoration: const InputDecoration(
                             labelText: "Address",
-                            labelStyle: TextStyle(color: Colors.black),
-                            focusColor: Colors.black54,
+                            labelStyle: TextStyle(color: Constants.primaryColor),
+                            focusColor: Constants.primaryColor,
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
+                              borderSide: BorderSide(color: Constants.primaryColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
+                              borderSide: BorderSide(color: Constants.primaryColor),
                             ),
                           ),
                           textInputAction: TextInputAction.next,
@@ -273,18 +274,18 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                         TextFormField(
                           controller: _sqFeetController,
                           focusNode: _sqFeetFocusNode,
-                          cursorColor: Colors.black,
+                          cursorColor: Constants.primaryColor,
                           keyboardType: const TextInputType.numberWithOptions(
                               decimal: true),
                           decoration: const InputDecoration(
                             labelText: "Total Square Feet",
-                            labelStyle: TextStyle(color: Colors.black),
-                            focusColor: Colors.black54,
+                            labelStyle: TextStyle(color: Constants.primaryColor),
+                            focusColor: Constants.primaryColor,
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
+                              borderSide: BorderSide(color: Constants.primaryColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
+                              borderSide: BorderSide(color: Constants.primaryColor),
                             ),
                           ),
                           textInputAction: TextInputAction.next,
@@ -332,14 +333,14 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                 decoration: const InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Colors.black, width: 1),
+                                        color: Constants.primaryColor, width: 1),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Colors.black, width: 1),
+                                        color: Constants.primaryColor, width: 1),
                                   ),
                                 ),
-                                dropdownColor: Colors.white,
+                                dropdownColor: Constants.secondaryColor,
                                 value: typedropdownValue,
                                 onChanged: (String? newValue) {
                                   setState(() {
@@ -395,7 +396,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                     children: const [
                                       Icon(
                                         Icons.meeting_room,
-                                        color: Colors.black38,
+                                        color: Constants.primaryColor,
                                       ),
                                       Text(
                                         "Total",
@@ -412,14 +413,14 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                     decoration: const InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Colors.black, width: 1),
+                                            color: Constants.primaryColor, width: 1),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Colors.black, width: 1),
+                                            color: Constants.primaryColor, width: 1),
                                       ),
                                     ),
-                                    dropdownColor: Colors.white,
+                                    dropdownColor: Constants.secondaryColor,
                                     value: roomdropdownValue,
                                     onChanged: (String? newValue) {
                                       setState(() {
@@ -478,7 +479,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                   children: const [
                                     FaIcon(
                                       FontAwesomeIcons.bed,
-                                      color: Colors.black38,
+                                      color: Constants.primaryColor,
                                     ),
                                     Text(
                                       " Bed ",
@@ -495,14 +496,14 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                     decoration: const InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Colors.black, width: 1),
+                                            color: Constants.primaryColor, width: 1),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Colors.black, width: 1),
+                                            color: Constants.primaryColor, width: 1),
                                       ),
                                     ),
-                                    dropdownColor: Colors.white,
+                                    dropdownColor: Constants.secondaryColor,
                                     value: beddropdownValue,
                                     onChanged: (String? newValue) {
                                       setState(() {
@@ -553,7 +554,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                   children: const [
                                     FaIcon(
                                       FontAwesomeIcons.bath,
-                                      color: Colors.black38,
+                                      color: Constants.primaryColor,
                                     ),
                                     Text(
                                       " Bath ",
@@ -570,14 +571,14 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                     decoration: const InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Colors.black, width: 1),
+                                            color: Constants.primaryColor, width: 1),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Colors.black, width: 1),
+                                            color: Constants.primaryColor, width: 1),
                                       ),
                                     ),
-                                    dropdownColor: Colors.white,
+                                    dropdownColor: Constants.secondaryColor,
                                     value: bathdropdownValue,
                                     onChanged: (String? newValue) {
                                       setState(() {
@@ -633,22 +634,22 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           keyboardType: TextInputType.multiline,
                           minLines: 1,
                           maxLines: 8,
-                          cursorColor: Colors.black,
+                          cursorColor: Constants.primaryColor,
                           decoration: const InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: Colors.black, width: 1),
+                                  BorderSide(color: Constants.primaryColor, width: 1),
                             ),
                             border: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: Colors.black, width: 1),
+                                  BorderSide(color: Constants.primaryColor, width: 1),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
+                              borderSide: BorderSide(color: Constants.primaryColor),
                             ),
-                            labelStyle: TextStyle(color: Colors.black),
+                            labelStyle: TextStyle(color: Constants.primaryColor),
                             label: Text("Description"),
-                            focusColor: Colors.black,
+                            focusColor: Constants.primaryColor,
                           ),
                           onSaved: (value) => {
                             editedPropertyDetails = Property(
@@ -678,12 +679,12 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                color: Colors.black,
+                color: Constants.primaryColor,
                 width: MediaQuery.of(context).size.width,
                 child: TextButton(
                   child: const Text(
                     'Save',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Constants.secondaryColor),
                   ),
                   onPressed: () {
                     _saveForm();

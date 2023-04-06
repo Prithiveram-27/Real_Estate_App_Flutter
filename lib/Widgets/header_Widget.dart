@@ -1,6 +1,8 @@
 // ignore_for_file: no_logic_in_create_state, file_names, prefer_final_fields, library_private_types_in_public_api
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class HeaderWidget extends StatefulWidget {
   final double _height;
   final bool _showIcon;
@@ -111,11 +113,11 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                     bottomLeft: Radius.circular(60),
                     bottomRight: Radius.circular(60),
                   ),
-                  border: Border.all(width: 5, color: Colors.white),
+                  border: Border.all(width: 5, color: Constants.secondaryColor),
                 ),
                 child: Icon(
                   _icon,
-                  color: Colors.white,
+                  color: Constants.secondaryColor,
                   size: 40.0,
                 ),
               ),

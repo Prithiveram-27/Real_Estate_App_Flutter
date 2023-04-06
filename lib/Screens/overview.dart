@@ -11,6 +11,8 @@ import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../constants.dart';
+
 class OverviewScreen extends StatelessWidget {
   static const route = "/OverviewScreen";
 
@@ -65,7 +67,7 @@ class OverviewScreen extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                color: Colors.white,
+                color: Constants.secondaryColor,
                 height: 285,
                 width: double.infinity,
                 child: Padding(
@@ -93,7 +95,7 @@ class OverviewScreen extends StatelessWidget {
                 height: 5,
               ),
               Container(
-                color: Colors.white,
+                color: Constants.secondaryColor,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -118,7 +120,7 @@ class OverviewScreen extends StatelessWidget {
                               children: [
                                 const FaIcon(
                                   FontAwesomeIcons.locationDot,
-                                  color: Colors.pink,
+                                  color: Constants.iconPrimaryColor,
                                 ),
                                 const SizedBox(
                                   width: 5,
@@ -139,10 +141,10 @@ class OverviewScreen extends StatelessWidget {
                           child: Container(
                             width: 50,
                             height: 50,
-                            color: Colors.white,
+                            color: Constants.secondaryColor,
                             child: const Icon(
                               Icons.share,
-                              color: Colors.pink,
+                              color: Constants.iconPrimaryColor,
                             ),
                           ),
                           onTap: () {
@@ -156,11 +158,11 @@ class OverviewScreen extends StatelessWidget {
                           child: Container(
                             width: 50,
                             height: 50,
-                            color: Colors.white,
+                            color: Constants.secondaryColor,
                             child: const Center(
                               child: FaIcon(
                                 FontAwesomeIcons.locationDot,
-                                color: Colors.pink,
+                                color: Constants.iconPrimaryColor,
                               ),
                             ),
                           ),
@@ -173,13 +175,13 @@ class OverviewScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                color: Colors.white,
+                color: Constants.secondaryColor,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Container(
                     height: 75,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Constants.secondaryColor,
                       border: Border.all(
                         color: Colors.grey,
                       ),
@@ -192,7 +194,7 @@ class OverviewScreen extends StatelessWidget {
                           children: [
                             const FaIcon(
                               FontAwesomeIcons.bed,
-                              color: Colors.black38,
+                              color: Constants.primaryColor,
                             ),
                             const SizedBox(
                               height: 2,
@@ -210,7 +212,7 @@ class OverviewScreen extends StatelessWidget {
                           children: [
                             const FaIcon(
                               FontAwesomeIcons.bath,
-                              color: Colors.black38,
+                              color: Constants.primaryColor,
                             ),
                             const SizedBox(
                               height: 2,
@@ -228,7 +230,7 @@ class OverviewScreen extends StatelessWidget {
                           children: [
                             const Icon(
                               Icons.meeting_room,
-                              color: Colors.black38,
+                              color: Constants.primaryColor,
                             ),
                             const SizedBox(
                               height: 2,
@@ -246,7 +248,7 @@ class OverviewScreen extends StatelessWidget {
                           children: [
                             const FaIcon(
                               FontAwesomeIcons.chartArea,
-                              color: Colors.black38,
+                              color: Constants.primaryColor,
                             ),
                             const SizedBox(
                               height: 2,
@@ -264,7 +266,7 @@ class OverviewScreen extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 height: 150,
                 width: double.infinity,
-                color: Colors.white,
+                color: Constants.secondaryColor,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -279,7 +281,7 @@ class OverviewScreen extends StatelessWidget {
                     ReadMoreText(
                       desc,
                       trimLines: 2,
-                      colorClickableText: Colors.pink,
+                      colorClickableText: Constants.iconPrimaryColor,
                       trimMode: TrimMode.Line,
                       trimCollapsedText: 'Read More',
                       style:const  TextStyle(fontSize: 13),
@@ -289,7 +291,7 @@ class OverviewScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                color: Colors.white,
+                color: Constants.secondaryColor,
                 width: double.infinity,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -341,12 +343,12 @@ class OverviewScreen extends StatelessWidget {
                         onPressed: () {},
                         style: const ButtonStyle(
                             backgroundColor:
-                                MaterialStatePropertyAll(Colors.pink)),
+                                MaterialStatePropertyAll(Constants.iconPrimaryColor)),
                         child: const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
                             "Book Now",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+                            style: TextStyle(color: Constants.secondaryColor, fontSize: 20),
                           ),
                         ),
                       ),

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:home_services_app/Providers/Property_api.dart';
 import 'package:provider/provider.dart';
 
+import '../constants.dart';
+
 class NearByList extends StatelessWidget {
   const NearByList({
     Key? key,
@@ -22,7 +24,7 @@ class NearByList extends StatelessWidget {
               ConnectionState.waiting
           ? const Center(
               child: CircularProgressIndicator(
-                color: Colors.black,
+                color: Constants.primaryColor,
               ),
             )
           : Consumer<PropertyApi>(
@@ -65,7 +67,8 @@ class NearByList extends StatelessWidget {
                                               Text(
                                                 propertyData.items[index].type,
                                                 style: const TextStyle(
-                                                    color: Colors.pink),
+                                                    color: Constants
+                                                        .iconPrimaryColor),
                                               ),
                                               const SizedBox(
                                                 height: 5,
@@ -123,8 +126,9 @@ class NearByList extends StatelessWidget {
                                 ),
                               ),
                               onTap: () {
-                                Navigator.of(context)
-                                    .pushNamed("/OverviewScreen",arguments: propertyData.items[index].id);
+                                Navigator.of(context).pushNamed(
+                                    "/OverviewScreen",
+                                    arguments: propertyData.items[index].id);
                               },
                             );
                           })

@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
 
+import '../constants.dart';
+
 class Searchbar extends StatelessWidget {
   const Searchbar({
     Key? key,
@@ -13,7 +15,7 @@ class Searchbar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: OutlineSearchBar(
-        borderColor: Colors.black,
+        borderColor: Constants.primaryColor,
         borderWidth: 3.0,
         borderRadius: const BorderRadius.all(Radius.circular(15.0)),
         searchButtonIconColor: Colors.grey[800],
