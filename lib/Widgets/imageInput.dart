@@ -4,7 +4,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import '../common.dart';
 import '../constants.dart';
 
 class ImageInput extends StatefulWidget {
@@ -27,16 +28,25 @@ class _ImageInputState extends State<ImageInput> {
       setState(() {
         _storedImage = imageTemp;
         print("_absoulute path --------------${_storedImage!.absolute}");
-        // File imagefile = File(_storedImage!.path); //convert Path to File
-        // Uint8List imagebytes =
-        //     await imagefile.readAsBytes(); //convert to bytes
-        // String base64string =
-        //     base64.encode(imagebytes); //convert bytes to base64 string
-        // print(base64string);
       });
+      // final SharedPreferences prefs = await SharedPreferences.getInstance();
+      // await prefs.setString('imgBase64', _storedImage!.path);
+      saveImgBase64();
     } catch (e) {
       print('Failed to pick image: $e');
     }
+  }
+
+  saveImgBase64() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('imgBase64', _storedImage!.path);
+    getImgBase();
+  }
+
+  getImgBase() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? action = prefs.getString('imgBase64');
+    print(action);
   }
 
   Future _buildPopupDialog(BuildContext context) {
@@ -113,7 +123,8 @@ class _ImageInputState extends State<ImageInput> {
             _buildPopupDialog(context);
           },
           style: const ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(Constants.primaryColor)),
+              backgroundColor:
+                  MaterialStatePropertyAll(Constants.primaryColor)),
           child: const Text(
             "Add Image",
             style: TextStyle(color: Constants.secondaryColor),

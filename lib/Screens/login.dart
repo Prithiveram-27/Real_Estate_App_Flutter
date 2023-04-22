@@ -179,7 +179,8 @@ class _LoginState extends State<Login> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Constants.secondaryColor,
-      body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start, children: [
         SizedBox(
           height: _headerHeight,
           child: HeaderWidget(_headerHeight, true, Icons.person),

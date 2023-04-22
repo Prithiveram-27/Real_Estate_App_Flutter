@@ -1,12 +1,14 @@
 // ignore_for_file: sized_box_for_whitespace, use_build_context_synchronously, file_names
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:home_services_app/Providers/Property_api.dart';
 import 'package:home_services_app/Providers/property.dart';
 import 'package:provider/provider.dart';
-import '../Widgets/imageInput.dart';
 import '../constants.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddPropertyScreen extends StatefulWidget {
   const AddPropertyScreen({super.key});
@@ -38,7 +40,6 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
   String roomdropdownValue = '1';
   String beddropdownValue = '1';
   String bathdropdownValue = '1';
-
 
   var editedPropertyDetails = Property(
     id: '',
@@ -80,8 +81,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
       return;
     }
     _formKey.currentState?.save();
-    setState(() {
-    });
+    setState(() {});
     if (editedPropertyDetails.id != "") {
       try {
         // await Provider.of<Property>(context, listen: false)
@@ -103,6 +103,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
       }
     } else {
       try {
+        // Common.convertImageTobase64();
         await Provider.of<PropertyApi>(context, listen: false)
             .addProperty(editedPropertyDetails);
       } catch (error) {
@@ -121,8 +122,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                 ));
       }
     }
-    setState(() {
-    });
+    setState(() {});
     Navigator.of(context).pushNamed("/MyPropertiesList");
   }
 
@@ -152,13 +152,16 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           cursorColor: Constants.primaryColor,
                           decoration: const InputDecoration(
                             labelText: "Name of the Property",
-                            labelStyle: TextStyle(color: Constants.primaryColor),
+                            labelStyle:
+                                TextStyle(color: Constants.primaryColor),
                             focusColor: Constants.primaryColor,
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Constants.primaryColor),
+                              borderSide:
+                                  BorderSide(color: Constants.primaryColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Constants.primaryColor),
+                              borderSide:
+                                  BorderSide(color: Constants.primaryColor),
                             ),
                           ),
                           textInputAction: TextInputAction.next,
@@ -194,13 +197,16 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           keyboardType: TextInputType.number,
                           decoration: const InputDecoration(
                             labelText: "Price",
-                            labelStyle: TextStyle(color: Constants.primaryColor),
+                            labelStyle:
+                                TextStyle(color: Constants.primaryColor),
                             focusColor: Constants.primaryColor,
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Constants.primaryColor),
+                              borderSide:
+                                  BorderSide(color: Constants.primaryColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Constants.primaryColor),
+                              borderSide:
+                                  BorderSide(color: Constants.primaryColor),
                             ),
                           ),
                           textInputAction: TextInputAction.next,
@@ -236,13 +242,16 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           keyboardType: TextInputType.streetAddress,
                           decoration: const InputDecoration(
                             labelText: "Address",
-                            labelStyle: TextStyle(color: Constants.primaryColor),
+                            labelStyle:
+                                TextStyle(color: Constants.primaryColor),
                             focusColor: Constants.primaryColor,
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Constants.primaryColor),
+                              borderSide:
+                                  BorderSide(color: Constants.primaryColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Constants.primaryColor),
+                              borderSide:
+                                  BorderSide(color: Constants.primaryColor),
                             ),
                           ),
                           textInputAction: TextInputAction.next,
@@ -279,13 +288,16 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                               decimal: true),
                           decoration: const InputDecoration(
                             labelText: "Total Square Feet",
-                            labelStyle: TextStyle(color: Constants.primaryColor),
+                            labelStyle:
+                                TextStyle(color: Constants.primaryColor),
                             focusColor: Constants.primaryColor,
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Constants.primaryColor),
+                              borderSide:
+                                  BorderSide(color: Constants.primaryColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Constants.primaryColor),
+                              borderSide:
+                                  BorderSide(color: Constants.primaryColor),
                             ),
                           ),
                           textInputAction: TextInputAction.next,
@@ -333,11 +345,13 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                 decoration: const InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Constants.primaryColor, width: 1),
+                                        color: Constants.primaryColor,
+                                        width: 1),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Constants.primaryColor, width: 1),
+                                        color: Constants.primaryColor,
+                                        width: 1),
                                   ),
                                 ),
                                 dropdownColor: Constants.secondaryColor,
@@ -413,11 +427,13 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                     decoration: const InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Constants.primaryColor, width: 1),
+                                            color: Constants.primaryColor,
+                                            width: 1),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Constants.primaryColor, width: 1),
+                                            color: Constants.primaryColor,
+                                            width: 1),
                                       ),
                                     ),
                                     dropdownColor: Constants.secondaryColor,
@@ -496,11 +512,13 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                     decoration: const InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Constants.primaryColor, width: 1),
+                                            color: Constants.primaryColor,
+                                            width: 1),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Constants.primaryColor, width: 1),
+                                            color: Constants.primaryColor,
+                                            width: 1),
                                       ),
                                     ),
                                     dropdownColor: Constants.secondaryColor,
@@ -571,11 +589,13 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                     decoration: const InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Constants.primaryColor, width: 1),
+                                            color: Constants.primaryColor,
+                                            width: 1),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Constants.primaryColor, width: 1),
+                                            color: Constants.primaryColor,
+                                            width: 1),
                                       ),
                                     ),
                                     dropdownColor: Constants.secondaryColor,
@@ -637,17 +657,19 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           cursorColor: Constants.primaryColor,
                           decoration: const InputDecoration(
                             enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Constants.primaryColor, width: 1),
+                              borderSide: BorderSide(
+                                  color: Constants.primaryColor, width: 1),
                             ),
                             border: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Constants.primaryColor, width: 1),
+                              borderSide: BorderSide(
+                                  color: Constants.primaryColor, width: 1),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Constants.primaryColor),
+                              borderSide:
+                                  BorderSide(color: Constants.primaryColor),
                             ),
-                            labelStyle: TextStyle(color: Constants.primaryColor),
+                            labelStyle:
+                                TextStyle(color: Constants.primaryColor),
                             label: Text("Description"),
                             focusColor: Constants.primaryColor,
                           ),
@@ -669,7 +691,34 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                         const SizedBox(
                           height: 10,
                         ),
-                        const ImageInput(),
+                        // const ImageInput(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 4, vertical: 8),
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                color: Constants.primaryColor,
+                                // width: MediaQuery.of(context).size.width,
+                                child: TextButton(
+                                  child: const Text(
+                                    'Add images',
+                                    style: TextStyle(
+                                        color: Constants.secondaryColor),
+                                  ),
+                                  onPressed: () async {
+                                    final _picker = ImagePicker();
+                                    List<XFile> images =
+                                        await _picker.pickMultiImage();
+                                    ShowBottomSheet(context, images);
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -696,5 +745,49 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
         ),
       ),
     );
+  }
+
+  Future<dynamic> ShowBottomSheet(
+      BuildContext context, List<XFile> imagesArray) {
+    return showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Wrap(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Wrap(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "Selected Images",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 350,
+                      child: GridView.builder(
+                          itemCount: imagesArray.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 15,
+                            crossAxisSpacing: 5,
+                          ),
+                          itemBuilder: (context, index) {
+                            return Image.file(File(imagesArray[index].path));
+                          }),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          );
+        },
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ));
   }
 }
