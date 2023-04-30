@@ -1,5 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace, use_build_context_synchronously, file_names
 
+import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'package:home_services_app/Providers/property.dart';
 import 'package:provider/provider.dart';
 import '../constants.dart';
 import 'package:image_picker/image_picker.dart';
+import '../common.dart';
 
 class AddPropertyScreen extends StatefulWidget {
   const AddPropertyScreen({super.key});
@@ -40,6 +43,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
   String roomdropdownValue = '1';
   String beddropdownValue = '1';
   String bathdropdownValue = '1';
+  var addImgBtnName = "Add images";
 
   var editedPropertyDetails = Property(
     id: '',
@@ -53,6 +57,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
     noOfBath: 1,
     desc: "",
     totalRooms: 0,
+    imgFiles: [],
   );
 
   @override
@@ -177,17 +182,19 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           },
                           onSaved: (value) => {
                             editedPropertyDetails = Property(
-                                id: editedPropertyDetails.id,
-                                title: value.toString(),
-                                type: editedPropertyDetails.type,
-                                imgUrl: editedPropertyDetails.imgUrl,
-                                price: editedPropertyDetails.price,
-                                address: editedPropertyDetails.address,
-                                totalSqFeet: editedPropertyDetails.totalSqFeet,
-                                totalRooms: editedPropertyDetails.totalRooms,
-                                noOfBed: editedPropertyDetails.noOfBed,
-                                noOfBath: editedPropertyDetails.noOfBath,
-                                desc: editedPropertyDetails.desc)
+                              id: editedPropertyDetails.id,
+                              title: value.toString(),
+                              type: editedPropertyDetails.type,
+                              imgUrl: editedPropertyDetails.imgUrl,
+                              price: editedPropertyDetails.price,
+                              address: editedPropertyDetails.address,
+                              totalSqFeet: editedPropertyDetails.totalSqFeet,
+                              totalRooms: editedPropertyDetails.totalRooms,
+                              noOfBed: editedPropertyDetails.noOfBed,
+                              noOfBath: editedPropertyDetails.noOfBath,
+                              desc: editedPropertyDetails.desc,
+                              imgFiles: [],
+                            )
                           },
                         ),
                         TextFormField(
@@ -222,17 +229,19 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           },
                           onSaved: (value) => {
                             editedPropertyDetails = Property(
-                                id: editedPropertyDetails.id,
-                                title: editedPropertyDetails.title,
-                                type: editedPropertyDetails.type,
-                                imgUrl: editedPropertyDetails.imgUrl,
-                                price: value.toString(),
-                                address: editedPropertyDetails.address,
-                                totalSqFeet: editedPropertyDetails.totalSqFeet,
-                                totalRooms: editedPropertyDetails.totalRooms,
-                                noOfBed: editedPropertyDetails.noOfBed,
-                                noOfBath: editedPropertyDetails.noOfBath,
-                                desc: editedPropertyDetails.desc)
+                              id: editedPropertyDetails.id,
+                              title: editedPropertyDetails.title,
+                              type: editedPropertyDetails.type,
+                              imgUrl: editedPropertyDetails.imgUrl,
+                              price: value.toString(),
+                              address: editedPropertyDetails.address,
+                              totalSqFeet: editedPropertyDetails.totalSqFeet,
+                              totalRooms: editedPropertyDetails.totalRooms,
+                              noOfBed: editedPropertyDetails.noOfBed,
+                              noOfBath: editedPropertyDetails.noOfBath,
+                              desc: editedPropertyDetails.desc,
+                              imgFiles: [],
+                            )
                           },
                         ),
                         TextFormField(
@@ -267,17 +276,19 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           },
                           onSaved: (value) => {
                             editedPropertyDetails = Property(
-                                id: editedPropertyDetails.id,
-                                title: editedPropertyDetails.title,
-                                type: editedPropertyDetails.type,
-                                imgUrl: editedPropertyDetails.imgUrl,
-                                price: editedPropertyDetails.price,
-                                address: value.toString(),
-                                totalSqFeet: editedPropertyDetails.totalSqFeet,
-                                totalRooms: editedPropertyDetails.totalRooms,
-                                noOfBed: editedPropertyDetails.noOfBed,
-                                noOfBath: editedPropertyDetails.noOfBath,
-                                desc: editedPropertyDetails.desc)
+                              id: editedPropertyDetails.id,
+                              title: editedPropertyDetails.title,
+                              type: editedPropertyDetails.type,
+                              imgUrl: editedPropertyDetails.imgUrl,
+                              price: editedPropertyDetails.price,
+                              address: value.toString(),
+                              totalSqFeet: editedPropertyDetails.totalSqFeet,
+                              totalRooms: editedPropertyDetails.totalRooms,
+                              noOfBed: editedPropertyDetails.noOfBed,
+                              noOfBath: editedPropertyDetails.noOfBath,
+                              desc: editedPropertyDetails.desc,
+                              imgFiles: [],
+                            )
                           },
                         ),
                         TextFormField(
@@ -312,17 +323,19 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           },
                           onSaved: (value) => {
                             editedPropertyDetails = Property(
-                                id: editedPropertyDetails.id,
-                                title: editedPropertyDetails.title,
-                                type: editedPropertyDetails.type,
-                                imgUrl: editedPropertyDetails.imgUrl,
-                                price: editedPropertyDetails.price,
-                                address: editedPropertyDetails.address,
-                                totalSqFeet: double.parse(value.toString()),
-                                totalRooms: editedPropertyDetails.totalRooms,
-                                noOfBed: editedPropertyDetails.noOfBed,
-                                noOfBath: editedPropertyDetails.noOfBath,
-                                desc: editedPropertyDetails.desc)
+                              id: editedPropertyDetails.id,
+                              title: editedPropertyDetails.title,
+                              type: editedPropertyDetails.type,
+                              imgUrl: editedPropertyDetails.imgUrl,
+                              price: editedPropertyDetails.price,
+                              address: editedPropertyDetails.address,
+                              totalSqFeet: double.parse(value.toString()),
+                              totalRooms: editedPropertyDetails.totalRooms,
+                              noOfBed: editedPropertyDetails.noOfBed,
+                              noOfBath: editedPropertyDetails.noOfBath,
+                              desc: editedPropertyDetails.desc,
+                              imgFiles: [],
+                            )
                           },
                         ),
                         const SizedBox(
@@ -377,19 +390,21 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                 }).toList(),
                                 onSaved: (value) => {
                                   editedPropertyDetails = Property(
-                                      id: editedPropertyDetails.id,
-                                      title: editedPropertyDetails.title,
-                                      type: value.toString(),
-                                      imgUrl: editedPropertyDetails.imgUrl,
-                                      price: editedPropertyDetails.price,
-                                      address: editedPropertyDetails.address,
-                                      totalSqFeet:
-                                          editedPropertyDetails.totalSqFeet,
-                                      totalRooms:
-                                          editedPropertyDetails.totalRooms,
-                                      noOfBed: editedPropertyDetails.noOfBed,
-                                      noOfBath: editedPropertyDetails.noOfBath,
-                                      desc: editedPropertyDetails.desc)
+                                    id: editedPropertyDetails.id,
+                                    title: editedPropertyDetails.title,
+                                    type: value.toString(),
+                                    imgUrl: editedPropertyDetails.imgUrl,
+                                    price: editedPropertyDetails.price,
+                                    address: editedPropertyDetails.address,
+                                    totalSqFeet:
+                                        editedPropertyDetails.totalSqFeet,
+                                    totalRooms:
+                                        editedPropertyDetails.totalRooms,
+                                    noOfBed: editedPropertyDetails.noOfBed,
+                                    noOfBath: editedPropertyDetails.noOfBath,
+                                    desc: editedPropertyDetails.desc,
+                                    imgFiles: [],
+                                  )
                                 },
                               ),
                             ),
@@ -466,22 +481,21 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                     }).toList(),
                                     onSaved: (value) => {
                                       editedPropertyDetails = Property(
-                                          id: editedPropertyDetails.id,
-                                          title: editedPropertyDetails.title,
-                                          type: editedPropertyDetails.type,
-                                          imgUrl: editedPropertyDetails.imgUrl,
-                                          price: editedPropertyDetails.price,
-                                          address:
-                                              editedPropertyDetails.address,
-                                          totalSqFeet:
-                                              editedPropertyDetails.totalSqFeet,
-                                          totalRooms:
-                                              int.parse(value.toString()),
-                                          noOfBed:
-                                              editedPropertyDetails.noOfBed,
-                                          noOfBath:
-                                              editedPropertyDetails.noOfBath,
-                                          desc: editedPropertyDetails.desc)
+                                        id: editedPropertyDetails.id,
+                                        title: editedPropertyDetails.title,
+                                        type: editedPropertyDetails.type,
+                                        imgUrl: editedPropertyDetails.imgUrl,
+                                        price: editedPropertyDetails.price,
+                                        address: editedPropertyDetails.address,
+                                        totalSqFeet:
+                                            editedPropertyDetails.totalSqFeet,
+                                        totalRooms: int.parse(value.toString()),
+                                        noOfBed: editedPropertyDetails.noOfBed,
+                                        noOfBath:
+                                            editedPropertyDetails.noOfBath,
+                                        desc: editedPropertyDetails.desc,
+                                        imgFiles: [],
+                                      )
                                     },
                                   ),
                                 ],
@@ -544,21 +558,22 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                     }).toList(),
                                     onSaved: (value) => {
                                       editedPropertyDetails = Property(
-                                          id: editedPropertyDetails.id,
-                                          title: editedPropertyDetails.title,
-                                          type: editedPropertyDetails.type,
-                                          imgUrl: editedPropertyDetails.imgUrl,
-                                          price: editedPropertyDetails.price,
-                                          address:
-                                              editedPropertyDetails.address,
-                                          totalSqFeet:
-                                              editedPropertyDetails.totalSqFeet,
-                                          totalRooms:
-                                              editedPropertyDetails.totalRooms,
-                                          noOfBed: int.parse(value.toString()),
-                                          noOfBath:
-                                              editedPropertyDetails.noOfBath,
-                                          desc: editedPropertyDetails.desc)
+                                        id: editedPropertyDetails.id,
+                                        title: editedPropertyDetails.title,
+                                        type: editedPropertyDetails.type,
+                                        imgUrl: editedPropertyDetails.imgUrl,
+                                        price: editedPropertyDetails.price,
+                                        address: editedPropertyDetails.address,
+                                        totalSqFeet:
+                                            editedPropertyDetails.totalSqFeet,
+                                        totalRooms:
+                                            editedPropertyDetails.totalRooms,
+                                        noOfBed: int.parse(value.toString()),
+                                        noOfBath:
+                                            editedPropertyDetails.noOfBath,
+                                        desc: editedPropertyDetails.desc,
+                                        imgFiles: [],
+                                      )
                                     },
                                   ),
                                 ),
@@ -621,21 +636,21 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                     }).toList(),
                                     onSaved: (value) => {
                                       editedPropertyDetails = Property(
-                                          id: editedPropertyDetails.id,
-                                          title: editedPropertyDetails.title,
-                                          type: editedPropertyDetails.type,
-                                          imgUrl: editedPropertyDetails.imgUrl,
-                                          price: editedPropertyDetails.price,
-                                          address:
-                                              editedPropertyDetails.address,
-                                          totalSqFeet:
-                                              editedPropertyDetails.totalSqFeet,
-                                          totalRooms:
-                                              editedPropertyDetails.totalRooms,
-                                          noOfBed:
-                                              editedPropertyDetails.noOfBed,
-                                          noOfBath: int.parse(value.toString()),
-                                          desc: editedPropertyDetails.desc)
+                                        id: editedPropertyDetails.id,
+                                        title: editedPropertyDetails.title,
+                                        type: editedPropertyDetails.type,
+                                        imgUrl: editedPropertyDetails.imgUrl,
+                                        price: editedPropertyDetails.price,
+                                        address: editedPropertyDetails.address,
+                                        totalSqFeet:
+                                            editedPropertyDetails.totalSqFeet,
+                                        totalRooms:
+                                            editedPropertyDetails.totalRooms,
+                                        noOfBed: editedPropertyDetails.noOfBed,
+                                        noOfBath: int.parse(value.toString()),
+                                        desc: editedPropertyDetails.desc,
+                                        imgFiles: [],
+                                      )
                                     },
                                   ),
                                 ),
@@ -675,17 +690,19 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           ),
                           onSaved: (value) => {
                             editedPropertyDetails = Property(
-                                id: editedPropertyDetails.id,
-                                title: editedPropertyDetails.title,
-                                type: editedPropertyDetails.type,
-                                imgUrl: editedPropertyDetails.imgUrl,
-                                price: editedPropertyDetails.price,
-                                address: editedPropertyDetails.address,
-                                totalSqFeet: editedPropertyDetails.totalSqFeet,
-                                totalRooms: editedPropertyDetails.totalRooms,
-                                noOfBed: editedPropertyDetails.noOfBed,
-                                noOfBath: editedPropertyDetails.noOfBath,
-                                desc: value.toString())
+                              id: editedPropertyDetails.id,
+                              title: editedPropertyDetails.title,
+                              type: editedPropertyDetails.type,
+                              imgUrl: editedPropertyDetails.imgUrl,
+                              price: editedPropertyDetails.price,
+                              address: editedPropertyDetails.address,
+                              totalSqFeet: editedPropertyDetails.totalSqFeet,
+                              totalRooms: editedPropertyDetails.totalRooms,
+                              noOfBed: editedPropertyDetails.noOfBed,
+                              noOfBath: editedPropertyDetails.noOfBath,
+                              desc: value.toString(),
+                              imgFiles: [],
+                            )
                           },
                         ),
                         const SizedBox(
@@ -703,16 +720,23 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                                 color: Constants.primaryColor,
                                 // width: MediaQuery.of(context).size.width,
                                 child: TextButton(
-                                  child: const Text(
-                                    'Add images',
-                                    style: TextStyle(
+                                  child: Text(
+                                    addImgBtnName,
+                                    style: const TextStyle(
                                         color: Constants.secondaryColor),
                                   ),
                                   onPressed: () async {
-                                    final _picker = ImagePicker();
-                                    List<XFile> images =
-                                        await _picker.pickMultiImage();
-                                    ShowBottomSheet(context, images);
+                                    if (editedPropertyDetails
+                                        .imgFiles.isNotEmpty) {
+                                      ShowBottomSheetForImages(context, null,
+                                          editedPropertyDetails.imgFiles, true);
+                                    } else {
+                                      final picker = ImagePicker();
+                                      List<XFile> images =
+                                          await picker.pickMultiImage();
+                                      ShowBottomSheetForImages(
+                                          context, images, null, false);
+                                    }
                                   },
                                 ),
                               ),
@@ -747,29 +771,30 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
     );
   }
 
-  Future<dynamic> ShowBottomSheet(
-      BuildContext context, List<XFile> imagesArray) {
+  Future<dynamic> ShowBottomSheetForImages(
+      BuildContext context,
+      List<XFile>? imagesArray,
+      List<String>? imgbase64Array,
+      bool isFilesSelected) {
     return showModalBottomSheet(
         context: context,
         builder: (context) {
-          return Wrap(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Wrap(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        "Selected Images",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 350,
-                      child: GridView.builder(
-                          itemCount: imagesArray.length,
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Wrap(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "Selected Images",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                ),
+                SizedBox(
+                  height: 350,
+                  child: isFilesSelected
+                      ? GridView.builder(
+                          itemCount: imgbase64Array?.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3,
@@ -777,13 +802,76 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                             crossAxisSpacing: 5,
                           ),
                           itemBuilder: (context, index) {
-                            return Image.file(File(imagesArray[index].path));
+                            return Image.memory(base64Decode(imgbase64Array![index]));
+                          })
+                      : GridView.builder(
+                          itemCount: imagesArray?.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 15,
+                            crossAxisSpacing: 5,
+                          ),
+                          itemBuilder: (context, index) {
+                            return Image.file(File(imagesArray![index].path));
                           }),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      color: Constants.primaryColor,
+                      width: MediaQuery.of(context).size.width / 2.5,
+                      child: TextButton(
+                        child: const Text(
+                          'Add More',
+                          style: TextStyle(color: Constants.secondaryColor),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                    Container(
+                      color: Constants.primaryColor,
+                      width: MediaQuery.of(context).size.width / 2.5,
+                      child: TextButton(
+                        child: const Text(
+                          'Confirm',
+                          style: TextStyle(color: Constants.secondaryColor),
+                        ),
+                        onPressed: () async {
+                          List<String> baseStringArray = [];
+                          for (int i = 0; i < imagesArray!.length; i++) {
+                            baseStringArray.add(
+                                await Common.convertImageTobase64(
+                                    imagesArray[i].path));
+                          }
+                          print(baseStringArray);
+                          editedPropertyDetails = Property(
+                            id: editedPropertyDetails.id,
+                            title: editedPropertyDetails.title,
+                            type: editedPropertyDetails.type,
+                            imgUrl: editedPropertyDetails.imgUrl,
+                            price: editedPropertyDetails.price,
+                            address: editedPropertyDetails.address,
+                            totalSqFeet: editedPropertyDetails.totalSqFeet,
+                            totalRooms: editedPropertyDetails.totalRooms,
+                            noOfBed: editedPropertyDetails.noOfBed,
+                            noOfBath: editedPropertyDetails.noOfBath,
+                            desc: editedPropertyDetails.desc,
+                            imgFiles: baseStringArray,
+                          );
+                          print(editedPropertyDetails);
+                          setState(() {
+                            addImgBtnName = "View Images";
+                          });
+                          Navigator.of(context).pop();
+                        },
+                      ),
                     ),
                   ],
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           );
         },
         shape: RoundedRectangleBorder(

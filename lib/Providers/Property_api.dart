@@ -49,7 +49,8 @@ class PropertyApi with ChangeNotifier {
           noOfBed: propertyDetails.noOfBed,
           noOfBath: propertyDetails.noOfBath,
           desc: propertyDetails.desc,
-          totalRooms: 0);
+          totalRooms: 0,
+          imgFiles: []);
       _propertyItems.add(newProperty);
 
       notifyListeners();
@@ -84,6 +85,7 @@ class PropertyApi with ChangeNotifier {
             noOfBath: propertyValue['noOfBath'],
             type: propertyValue['type'],
             totalRooms: propertyValue['totalRooms'],
+            imgFiles: [],
           ),
         );
       });
@@ -126,6 +128,7 @@ class PropertyApi with ChangeNotifier {
               noOfBath: propertyValue['noOfBath'],
               type: propertyValue['type'],
               totalRooms: propertyValue['totalRooms'],
+              imgFiles: [],
             ),
           );
         }
@@ -169,6 +172,7 @@ class PropertyApi with ChangeNotifier {
               noOfBath: propertyValue['noOfBath'],
               type: propertyValue['type'],
               totalRooms: propertyValue['totalRooms'],
+              imgFiles: [],
             ),
           );
         }
@@ -205,6 +209,7 @@ class PropertyApi with ChangeNotifier {
             noOfBath: propertyValue['noOfBath'],
             type: propertyValue['type'],
             totalRooms: propertyValue['totalRooms'],
+            imgFiles: [],
           ),
         );
       });

@@ -73,6 +73,7 @@ class MyApp extends StatelessWidget {
             totalRooms: 0,
             totalSqFeet: 0,
             type: '',
+            imgFiles: [],
           ),
         ),
       ],
