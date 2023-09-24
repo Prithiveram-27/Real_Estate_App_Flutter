@@ -52,7 +52,7 @@ dependencies:
   path_provider: ^2.0.14
   path: ^1.8.2
   shared_preferences: ^2.1.0
-
+  firebase_database: ^10.2.6
 dev_dependencies:
   flutter_test:
     sdk: flutter

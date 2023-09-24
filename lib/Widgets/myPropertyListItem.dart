@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class MyPropertyListItem extends StatelessWidget {
+  final String propertyId;
   final String imgUrl;
   final String propType;
   final String title;
@@ -12,8 +13,8 @@ class MyPropertyListItem extends StatelessWidget {
   final int noOfBed;
   final double price;
 
-  const MyPropertyListItem(this.imgUrl, this.propType, this.title, this.address,
-      this.noOfBed, this.price,
+  const MyPropertyListItem(this.propertyId, this.imgUrl, this.propType,
+      this.title, this.address, this.noOfBed, this.price,
       {super.key});
 
   @override
@@ -44,7 +45,8 @@ class MyPropertyListItem extends StatelessWidget {
                     children: [
                       Text(
                         propType,
-                        style: const TextStyle(color: Constants.iconPrimaryColor),
+                        style:
+                            const TextStyle(color: Constants.iconPrimaryColor),
                       ),
                       const SizedBox(
                         height: 5,
@@ -95,7 +97,8 @@ class MyPropertyListItem extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.of(context).pushNamed("/OverviewScreen");
+        Navigator.of(context)
+            .pushNamed("/OverviewScreen", arguments: propertyId);
       },
     );
   }

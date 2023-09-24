@@ -13,6 +13,7 @@ import '../Widgets/nearbyList.dart';
 import '../Widgets/searchbarTemplate.dart';
 
 class Home extends StatefulWidget {
+  static const route = "/Home";
   @override
   State<Home> createState() => _HomeState();
 }
@@ -51,14 +52,6 @@ class _HomeState extends State<Home> {
 
   Future<bool> _handleLocationPermission() async {
     LocationPermission permission;
-
-    // serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    // if (!serviceEnabled) {
-    //   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-    //       content: Text(
-    //           'Location services are disabled. Please enable the services')));
-    //   return false;
-    // }
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();

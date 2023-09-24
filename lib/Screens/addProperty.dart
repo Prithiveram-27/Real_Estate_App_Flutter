@@ -128,7 +128,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
       }
     }
     setState(() {});
-    Navigator.of(context).pushNamed("/MyPropertiesList");
+    Navigator.of(context).pushNamed("/MyPropertiesList",arguments: "My Properties | add");
   }
 
   @override

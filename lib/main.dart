@@ -98,6 +98,7 @@ class MyApp extends StatelessWidget {
           ),
           home: Home(),
           routes: {
+            Home.route: (context) => Home(),
             OverviewScreen.route: (context) => OverviewScreen(),
             AddPropertyScreen.route: (context) => AddPropertyScreen(),
             PropertiesList.route: (context) => PropertiesList(),
